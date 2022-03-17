@@ -35,7 +35,7 @@ const Home = () => {
     setrandomImage(randMemeImg);
   };
   const TestButton = () => {
-    html2canvas(document.getElementById("meme")).then(function (canvas) {
+    html2canvas(document.body).then(function (canvas) {
       console.log(document.body.appendChild(canvas));
       var link = document.createElement("a");
       link.download = "filename.png";
