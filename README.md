@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Setup
+### `Setup`
 
 Make sure NodeJS is installed in your system.
 Clone this repo [Meme Generator repo](https://github.com/Nitin2806/memegenerator-react)
