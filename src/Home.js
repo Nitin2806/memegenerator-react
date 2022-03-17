@@ -4,9 +4,11 @@ import styled from "styled-components";
 const Home = () => {
   const [topText, settoptext] = useState();
   const [bottomText, setbottomtext] = useState();
-  const [memeimage, setmemeimage] = useState("http://i.imgflip.com/1bij.jpg");
+  const [memeimage, setmemeimage] = useState();
   const [allmeme, setallmeme] = useState([]);
-  const [randomImage, setrandomImage] = useState();
+  const [randomImage, setrandomImage] = useState(
+    "http://i.imgflip.com/1bij.jpg"
+  );
 
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
@@ -25,7 +27,6 @@ const Home = () => {
       setbottomtext(event.target.value);
     }
   };
-
   let handleSubmit = (event) => {
     console.log("Working");
     event.preventDefault();
@@ -37,6 +38,7 @@ const Home = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
+        Top Text
         <Input
           type="text"
           name="topText"
@@ -44,6 +46,7 @@ const Home = () => {
           value={topText}
           onChange={handleChange}
         />
+        Bottom Text
         <Input
           type="text"
           name="bottomText"
@@ -51,13 +54,13 @@ const Home = () => {
           value={bottomText}
           onChange={handleChange}
         />
-        <Button>Generate</Button>
+        <Button>Generate New Image</Button>
       </Form>
       <Meme>
-        <h2>{topText}</h2>
+        <Memetext>{topText}</Memetext>
 
-        <img alt="meme" src={memeimage} />
-        <h2>{bottomText}</h2>
+        <Image alt="meme" src={randomImage} />
+        <Memetext>{bottomText}</Memetext>
       </Meme>
     </Container>
   );
@@ -66,9 +69,10 @@ const Home = () => {
 export default Home;
 
 const Container = styled.div`
-  padding: 20px;
-
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(1, 1, 1, 0.4);
+  height: 100%;
+  width: 100%;
+  padding: 30px;
 `;
 
 const Input = styled.input`
@@ -87,9 +91,16 @@ const Button = styled.button`
 `;
 const Meme = styled.div`
   border: 1px solid black;
+  border-radius: 5px;
   color: white;
-  width: 567px;
+  max-width: 567px;
   align-items: center;
   text-align: center;
   background-color: black;
 `;
+const Image = styled.img`
+  width: 567px;
+  height: 500px;
+`;
+
+const Memetext = styled.h2``;
