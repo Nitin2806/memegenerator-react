@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import html2canvas from "html2canvas";
 
 const Home = () => {
   const [topText, settoptext] = useState();
   const [bottomText, setbottomtext] = useState();
-  const [memeimage, setmemeimage] = useState();
   const [allmeme, setallmeme] = useState([]);
   const [randomImage, setrandomImage] = useState(
     "http://i.imgflip.com/1bij.jpg"
@@ -17,7 +17,7 @@ const Home = () => {
         const { memes } = response.data;
         setallmeme(memes);
       });
-  });
+  }, []);
 
   let handleChange = (event) => {
     console.log("Working change");
@@ -33,6 +33,16 @@ const Home = () => {
     const randNum = Math.floor(Math.random() * allmeme.length);
     const randMemeImg = allmeme[randNum].url;
     setrandomImage(randMemeImg);
+  };
+  const TestButton = () => {
+    html2canvas(document.getElementById("meme")).then(function (canvas) {
+      console.log(document.body.appendChild(canvas));
+      var link = document.createElement("a");
+      link.download = "filename.png";
+      link.href = document.body.appendChild(canvas).toDataURL();
+      link.click();
+    });
+    console.log("here");
   };
 
   return (
@@ -56,7 +66,8 @@ const Home = () => {
         />
         <Button>Generate New Image</Button>
       </Form>
-      <Meme>
+      <Button onClick={TestButton}>Download</Button>
+      <Meme className="meme">
         <Memetext>{topText}</Memetext>
 
         <Image alt="meme" src={randomImage} />
