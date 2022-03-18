@@ -4,9 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### `Setup`
 
-Make sure NodeJS is installed in your system.\
-Clone this repo use the command [git clone "https://github.com/Nitin2806/memegenerator-react"](https://github.com/Nitin2806/memegenerator-react).\
-Once the repo is cloned use npm i command.
+Make sure NodeJS and Git is installed in your system.\
+Clone this repo use the command [git clone "https://github.com/Nitin2806/memegenerator-react"](https://github.com/Nitin2806/memegenerator-react)\
+Once the repo is cloned use npm i command inside the project directory.
 
 ### `npm start`
 
